@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.content-height {
+    min-height: calc(100vh - theme('spacing.7') - theme('spacing.24'))
+}
+
+.btn {
+    @apply text-sm md:text-base font-medium rounded-none py-2 px-4 md:py-3 md:px-5 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2;
+}
+
+.btn-primary {
+    @apply bg-black text-white;
+}
+
+.btn-secondary {
+    @apply bg-slate-300 text-slate-900;
+}
+
+.my-input {
+    @apply block w-full rounded-none py-2 px-4 md:py-3 md:px-5 border border-gray-300 shadow-sm focus:border-black focus:ring-gray-700 sm:text-sm;
+}
