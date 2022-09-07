@@ -1,5 +1,7 @@
 <template>
-    <div class="text-4xl">
-        <p>Home</p>        
+
+    <div class="text-xl">            
+
     </div>
+
 </template>

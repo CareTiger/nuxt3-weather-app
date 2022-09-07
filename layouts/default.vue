@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <div class="bg-weather-primary min-h-screen">
         <!--navbar-->
-        <div class="flex flex-row items-center justify-between p-2 bg-gray-200">
-            <h1 class="text-4xl md:text-6xl">Weather</h1>            
+        <div class="flex flex-row items-center justify-between p-2">
+            <h1 class="text-4xl md:text-6xl">Weather</h1>                     
             <div v-if="siteStore.showNavbar">
                 <ModalContainer>
                     <SiteNavigation />
                 </ModalContainer>
             </div>
-            <div  v-else>
+            <div>
                 <span @click="showNav"><i class="material-icons-outlined text-4xl md:text-6xl">menu</i></span>
             </div>
         </div>

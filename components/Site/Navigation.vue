@@ -1,5 +1,8 @@
 <template>
-    <div class="grid min-h-full place-items-end p-0">
+    <transition
+    enter-active-class="animate__animated animate__fadeInRight"
+    leave-active-class="animate__animated animate__fadeOutRight"    >
+    <div class="grid min-h-full place-items-end p-0" v-if="siteStore.showNavbar">
         <div class="bg-gray-50 rounded-lg min-h-screen w-3/5 md:w-1/3">
                 <!--
                     Modal panel, show/hide based on modal state.
@@ -17,7 +20,8 @@
                 </div>
 
         </div>        
-    </div>    
+    </div>
+    </transition>        
 </template>
 
 <script setup>
