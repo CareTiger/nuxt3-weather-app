@@ -1,21 +1,29 @@
 <template>
-    <div class="bg-weather-primary min-h-screen">
-        <!--navbar-->
-        <div class="flex flex-row items-center justify-between p-2">
-            <h1 class="text-4xl md:text-6xl">Weather</h1>                     
-            <div v-if="siteStore.showNavbar">
-                <ModalContainer>
-                    <SiteNavigation />
-                </ModalContainer>
-            </div>
-            <div>
-                <span @click="showNav"><i class="material-icons-outlined text-4xl md:text-6xl">menu</i></span>
-            </div>
-        </div>
-        <!--Content-->
-        <slot />
+    <div class="bg-weather-primary min-h-screen font-Roboto">
 
-        <!--Footer-->
+        <div class="mx-auto">
+
+            <!--navbar-->
+            <div class="flex flex-row items-center justify-between p-2 text-white">
+                <div class="h-full flex items-center hover:cursor-pointer">
+                    <i class="material-icons-outlined text-xl md:text-3xl hover:text-weather-secondary" @click="showTooltip">info</i>
+                    <i class="ml-4 material-icons-outlined text-xl md:text-3xl">add</i>
+                </div>                       
+                <nuxt-link to="/" class="text-4xl md:text-6xl">Weather</nuxt-link>                     
+                <div id="weather" class="h-full flex items-center hover:cursor-pointer" >
+                    <i class="material-icons-outlined text-4xl md:text-6xl" @click="showNav">menu</i>                        
+                    <NavBar v-if="siteStore.showNavbar" />
+                </div>
+            </div>
+            <base-modal v-if="siteStore.showTooltip">
+                <h1>Hello from modal</h1>
+            </base-modal>
+
+            <!--Content-->
+            <slot />
+
+            <!--Footer-->
+        </div>
 
     </div>
 </template>
@@ -26,4 +34,7 @@
     const showNav = () => {
         siteStore.toggleNavbar()
     }
+    const showTooltip = () => {
+        siteStore.toggleTooltip()
+    }    
 </script>

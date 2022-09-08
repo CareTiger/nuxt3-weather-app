@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         ],
         },    
     modules: [ '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+    plugins: [],
     css: ['animate.css/animate.min.css'],
     buildModules: ['@pinia/nuxt',]
 })
