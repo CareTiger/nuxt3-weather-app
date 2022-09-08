@@ -1,6 +1,6 @@
 <template>
     <teleport to="body">
-    <Transition
+    <Transition mode="in-out"
     enter-active-class="animate__animated animate__fadeInRight zoomIn"
     leave-active-class="animate__animated animate__fadeOutRight zoomOut">    
     <div>
