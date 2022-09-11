@@ -16,4 +16,8 @@ const siteStore = useSiteStore ()
 const closeTooltip = () => {
         siteStore.toggleTooltip()
     }    
+
+defineProps ({
+    
+})
 </script>
