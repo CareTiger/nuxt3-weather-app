@@ -27,7 +27,12 @@
                         @click="showNav"
                         >menu</i
                     >
-                    <transition name="parent" appear @after-leave="leave">
+                    <transition
+                        name="parent"
+                        appear
+                        @leave="leave"
+                        :css="false"
+                    >
                         <NavBar v-if="siteStore.showNavbar" />
                     </transition>
                 </div>
@@ -54,12 +59,20 @@ const showNav = () => {
 const showTooltip = () => {
     siteStore.toggleTooltip();
 };
-function leave(el) {
+function leave(el, done) {
+    console.log("before leave");
     gsap.to(el, {
-        duration: 2,
-        opacity: 1,
-        x: 0,
-        ease: "power1.easeOut",
+        duration: 0.7,
+        scaleX: 1,
+        scaleY: 1,
+        x: 300,
+        ease: "elastic.inOut(2.5, 1)",
+    });
+    gsap.to(el, {
+        duration: 0.2,
+        delay: 0.5,
+        opacity: 0,
+        onComplete: done,
     });
 }
 </script>

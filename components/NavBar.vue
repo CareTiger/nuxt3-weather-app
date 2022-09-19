@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="relative z-10" role="dialog">
-            <div class="fixed inset-0 bg-transparent bg-opacity-75"></div>
+            <div class="fixed inset-0 bg-red-400 bg-opacity-75"></div>
             <div class="fixed inset-0 z-10 overflow-y-auto">
                 <!-- Actual modal -->
                 <Transition name="nav" appear @enter="enter">
