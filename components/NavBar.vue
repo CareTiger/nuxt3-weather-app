@@ -4,12 +4,7 @@
             <div class="fixed inset-0 bg-transparent bg-opacity-75"></div>
             <div class="fixed inset-0 z-10 overflow-y-auto">
                 <!-- Actual modal -->
-                <Transition
-                    name="nav"
-                    appear
-                    @before-enter="beforeEnter"
-                    @before-leave="leave"
-                >
+                <Transition name="nav" appear @enter="enter">
                     <div class="grid min-h-full w-full place-items-end">
                         <div
                             class="bg-weather-secondary text-white rounded-l-lg min-h-screen w-3/4"
@@ -65,22 +60,13 @@ const closeNav = () => {
     siteStore.toggleNavbar();
 };
 
-function beforeEnter(el) {
+function enter(el, done) {
     gsap.from(el, {
-        duration: 1.5,
+        duration: 1,
         opacity: 1,
         x: 400,
-        ease: "power2.easeInOut",
-    });
-}
-
-function leave(el) {
-    console.log("leave");
-    gsap.to(el, {
-        duration: 2,
-        opacity: 0,
-        x: 400,
-        ease: "power1.easeInOut",
+        ease: "power1.easeIn",
+        onComplete: done,
     });
 }
 </script>
