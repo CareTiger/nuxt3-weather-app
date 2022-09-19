@@ -1,14 +1,68 @@
 <template>
-    <div>
-        <h1>Vue Transition Animation</h1>
-        <button class="btn btn-primary" @click="open = !open">Toggle Animation</button>
-        <Transition
-        enter-active-class="animate__animated animate__fadeInRight zoomIn"
-        leave-active-class="animate__animated animate__fadeOutRight zoomOut">
-            <p v-if="open" class="text-4xl">Hello World</p>
-        </Transition>        
+    <div class="contact">
+        <h1 class="h-64 text-center text-white text-xl">Contact</h1>
+        <transition-group
+            appear
+            tag="ul"
+            @before-enter="beforeEnter"
+            @enter="enter"
+        >
+            <li
+                v-for="(icon, index) in icons"
+                :key="icon.name"
+                :data-index="index"
+            >
+                <span class="material-icons">{{ icon.name }}</span>
+                <div>{{ icon.text }}</div>
+            </li>
+        </transition-group>
     </div>
 </template>
+
 <script setup>
-    const open = ref(false)
+import gsap from "gsap";
+const icons = ref([
+    { name: "alternate_email", text: "by email" },
+    { name: "local_phone", text: "by phone" },
+    { name: "local_post_office", text: "by post" },
+    { name: "local_fire_department", text: "by smoke signal" },
+]);
+
+const beforeEnter = (el) => {
+    console.log("before");
+    el.style.opacity = 0;
+    el.style.transform = "translateY(400px)";
+};
+
+const enter = (el, done) => {
+    console.log("enter");
+    gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        onComplete: done,
+        delay: el.dataset.index * 0.2,
+    });
+};
 </script>
+
+<style>
+.contact ul {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    max-width: 400px;
+    margin: 60px auto;
+}
+.contact li {
+    list-style-type: none;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    line-height: 1.5em;
+    height: 150px;
+}
+</style>
